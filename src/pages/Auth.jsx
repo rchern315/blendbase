@@ -11,19 +11,16 @@ function AuthPage() {
   const [error, setError] = useState(null)
 
   const handleGoogleSignIn = async () => {
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: window.location.origin
-        }
-      })
-      if (error) throw error
-    } catch (error) {
-      setError(error.message)
-    }
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: 'google'
+    // Don't specify redirectTo - Supabase will use your site URL
+  })
+  
+  if (error) {
+    console.error('Google sign in error:', error)
+    alert(error.message)
   }
-
+}
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError(null)

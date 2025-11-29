@@ -34,10 +34,13 @@ function ReviewForm({ recipeId, currentUser, onReviewSubmitted }) {
     }
   }
 
-  const handleSubmit = async (e) => {
+   const handleSubmit = async (e) => {
     e.preventDefault()
     
-    if (!currentUser) {
+    // Get authenticated user directly from Supabase
+    const { data: { user }, error: authError } = await supabase.auth.getUser()
+    
+    if (!user || authError) {
       setMessage('Please sign in to leave a review')
       return
     }
@@ -53,10 +56,10 @@ function ReviewForm({ recipeId, currentUser, onReviewSubmitted }) {
     try {
       const reviewData = {
         recipe_id: recipeId,
-        user_id: currentUser.id,
+        user_id: user.id,  // ← Changed from currentUser.id to user.id
         rating: rating,
         review_text: reviewText.trim() || null,
-        user_name: currentUser.email.split('@')[0]
+        user_name: user.email.split('@')[0]  // ← Changed from currentUser.email
       }
 
       if (existingReview) {
@@ -85,7 +88,7 @@ function ReviewForm({ recipeId, currentUser, onReviewSubmitted }) {
       setTimeout(() => setMessage(''), 3000)
     } catch (error) {
       console.error('Error submitting review:', error)
-      setMessage('Error submitting review. Please try again.')
+      setMessage(`Error: ${error.message || 'Please try again'}`)  
     } finally {
       setSubmitting(false)
     }
