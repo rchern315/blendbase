@@ -12,8 +12,10 @@ function AuthPage() {
 
   const handleGoogleSignIn = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
-    provider: 'google'
-    // Don't specify redirectTo - Supabase will use your site URL
+    provider: 'google',
+    options: {
+      redirectTo: window.location.origin
+    }
   })
   
   if (error) {

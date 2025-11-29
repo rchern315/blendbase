@@ -38,23 +38,30 @@ function Dashboard() {
 
       // Calculate stats
       if (recipesData && recipesData.length > 0) {
-        // Get all ratings for user's recipes
+        // Get all reviews for user's recipes (changed from 'ratings' to 'reviews')
         const recipeIds = recipesData.map(r => r.id)
-        const { data: ratingsData } = await supabase
-          .from('ratings')
+        const { data: reviewsData } = await supabase
+          .from('reviews')  // ✅ Changed from 'ratings' to 'reviews'
           .select('rating')
           .in('recipe_id', recipeIds)
 
         let avgRating = 0
-        if (ratingsData && ratingsData.length > 0) {
-          const sum = ratingsData.reduce((acc, r) => acc + r.rating, 0)
-          avgRating = (sum / ratingsData.length).toFixed(1)
+        if (reviewsData && reviewsData.length > 0) {
+          const sum = reviewsData.reduce((acc, r) => acc + r.rating, 0)
+          avgRating = (sum / reviewsData.length).toFixed(1)
         }
 
         setStats({
           totalRecipes: recipesData.length,
           avgRating: avgRating,
           totalViews: 0 // We'll implement view tracking later
+        })
+      } else {
+        // ✅ Reset stats when no recipes
+        setStats({
+          totalRecipes: 0,
+          avgRating: 0,
+          totalViews: 0
         })
       }
     } catch (error) {
@@ -77,8 +84,8 @@ function Dashboard() {
 
       if (error) throw error
 
-      // Refresh recipes
-      fetchUserRecipes()
+      // ✅ Refresh recipes AND recalculate stats
+      await fetchUserRecipes()
     } catch (error) {
       console.error('Error deleting recipe:', error)
       alert('Failed to delete recipe')
@@ -88,7 +95,9 @@ function Dashboard() {
   if (loading) {
     return (
       <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8">
-        <div className="text-center text-gray-600">Loading your dashboard...</div>
+        <div className="flex justify-center items-center py-20">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-primary border-t-transparent"></div>
+        </div>
       </div>
     )
   }
