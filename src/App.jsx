@@ -7,11 +7,11 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
 // Pages
-import Home from './pages/home'
+import Home from './pages/Home'
 import Auth from './pages/Auth'
 import Create from './pages/Create'
 import Edit from './pages/Edit'
-import Dashboard from './pages/dashboard'
+import Dashboard from './pages/Dashboard'
 
 function App() {
   const [session, setSession] = useState(null)
