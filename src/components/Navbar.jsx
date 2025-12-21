@@ -1,11 +1,20 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 
-function Navbar({ session, onSignOut }) {
+function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { user, signOut } = useAuth() // Get user and signOut from context
+  const navigate = useNavigate()
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false)
+  }
+
+  const handleSignOut = async () => {
+    await signOut()
+    closeMobileMenu()
+    navigate('/')
   }
 
   return (
@@ -29,7 +38,7 @@ function Navbar({ session, onSignOut }) {
               Recipes
             </Link>
 
-            {session ? (
+            {user ? (
               <>
                 <Link 
                   to="/create" 
@@ -44,10 +53,10 @@ function Navbar({ session, onSignOut }) {
                   Dashboard
                 </Link>
                 <span className="text-sm opacity-90">
-                  {session.user.email}
+                  {user.email}
                 </span>
                 <button
-                  onClick={onSignOut}
+                  onClick={handleSignOut}
                   className="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition font-semibold"
                 >
                   Sign Out
@@ -95,7 +104,7 @@ function Navbar({ session, onSignOut }) {
               Recipes
             </Link>
 
-            {session ? (
+            {user ? (
               <>
                 <Link 
                   to="/create" 
@@ -112,13 +121,10 @@ function Navbar({ session, onSignOut }) {
                   Dashboard
                 </Link>
                 <div className="py-2 px-3 text-sm opacity-90 border-t border-white/20 mt-2 pt-3">
-                  {session.user.email}
+                  {user.email}
                 </div>
                 <button
-                  onClick={() => {
-                    onSignOut()
-                    closeMobileMenu()
-                  }}
+                  onClick={handleSignOut}
                   className="w-full text-left py-2 hover:bg-white/10 rounded-lg px-3 transition font-medium"
                 >
                   Sign Out

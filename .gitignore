@@ -24,13 +24,22 @@ dist-ssr
 *.sw?
 # dependencies
 /node_modules
-
+.pnpm-debug.log*
 # production
 /dist
-
+build/
 # local env files
 .env
 .env.local
-.env.*.local
-.vercel
-.env*.local
+.env.production
+# editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# misc
+*.log
+npm-debug.log*
