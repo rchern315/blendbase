@@ -46,7 +46,7 @@ function ActiveFilters({ searchTerm, sortBy, prepTimeFilter, ratingFilter, onCle
       ))}
       <button
         onClick={onClearAll}
-        className="text-sm text-gray-500 hover:text-gray-700 underline ml-2"
+        className="text-sm text-gray-600 hover:text-gray-700 underline ml-2"
       >
         Clear all
       </button>

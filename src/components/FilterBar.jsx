@@ -7,8 +7,9 @@ function FilterBar({ sortBy, onSortChange, prepTimeFilter, onPrepTimeChange, rat
         {/* Sort By */}
         <div className="flex items-center gap-2 flex-1 min-w-[200px]">
           <FaSortAmountDown className="text-gray-400" />
-          <label className="text-sm font-medium text-gray-700 whitespace-nowrap">Sort by:</label>
+          <label htmlFor="sortBy" className="text-sm font-medium text-gray-700 whitespace-nowrap">Sort by:</label>
           <select
+            id="sortBy"
             value={sortBy}
             onChange={(e) => onSortChange(e.target.value)}
             className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:border-primary focus:outline-none text-sm"
@@ -24,8 +25,9 @@ function FilterBar({ sortBy, onSortChange, prepTimeFilter, onPrepTimeChange, rat
         {/* Prep Time Filter */}
         <div className="flex items-center gap-2 flex-1 min-w-[200px]">
           <FaFilter className="text-gray-400" />
-          <label className="text-sm font-medium text-gray-700 whitespace-nowrap">Prep time:</label>
+          <label htmlFor="prepTimeFilter" className="text-sm font-medium text-gray-700 whitespace-nowrap">Prep time:</label>
           <select
+            id="prepTimeFilter"
             value={prepTimeFilter}
             onChange={(e) => onPrepTimeChange(e.target.value)}
             className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:border-primary focus:outline-none text-sm"
@@ -41,8 +43,9 @@ function FilterBar({ sortBy, onSortChange, prepTimeFilter, onPrepTimeChange, rat
         {/* Rating Filter */}
         <div className="flex items-center gap-2 flex-1 min-w-[200px]">
           <span className="text-yellow-400">★</span>
-          <label className="text-sm font-medium text-gray-700 whitespace-nowrap">Min rating:</label>
+          <label htmlFor="ratingFilter" className="text-sm font-medium text-gray-700 whitespace-nowrap">Min rating:</label>
           <select
+            id="ratingFilter"
             value={ratingFilter}
             onChange={(e) => onRatingChange(e.target.value)}
             className="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:border-primary focus:outline-none text-sm"
