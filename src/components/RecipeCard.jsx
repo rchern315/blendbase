@@ -90,7 +90,7 @@ function RecipeCard({ recipe }) {
               </div>
             </div>
           ) : (
-            <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm text-gray-500 px-3 py-2 rounded-lg text-xs font-medium shadow-lg z-20">
+            <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm text-gray-500 px-3 py-2 rounded-lg text-xs font-bold shadow-lg z-20">
               No ratings
             </div>
           )}
@@ -133,7 +133,7 @@ function RecipeCard({ recipe }) {
           <div className="text-center mx-12 mb-6">
             <button
               onClick={() => setShowModal(true)}
-              className="font-heading inline-block bg-pink hover:bg-pink-700 py-[0.65em] px-4 w-full text-center rounded-[5px] text-white font-medium tracking-[0.2px] text-[17px] border-none cursor-pointer transition-all duration-[250ms] ease-out hover:-translate-y-[3px] hover:shadow-button-hover"
+              className="font-heading inline-block bg-pink hover:bg-pink-700 py-[0.65em] px-4 w-full text-center rounded-[5px] text-white font-bold tracking-[0.2px] text-[17px] border-none cursor-pointer transition-all duration-[250ms] ease-out hover:-translate-y-[3px] hover:shadow-button-hover"
             >
               View Recipe
             </button>
