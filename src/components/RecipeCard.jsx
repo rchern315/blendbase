@@ -131,12 +131,13 @@ function RecipeCard({ recipe }) {
 
           {/* Button */}
           <div className="text-center mx-12 mb-6">
-            <button
-              onClick={() => setShowModal(true)}
-              className="font-heading inline-block bg-pink hover:bg-pink-700 py-[0.65em] px-4 w-full text-center rounded-[5px] text-white font-bold tracking-[0.2px] text-[17px] border-none cursor-pointer transition-all duration-[250ms] ease-out hover:-translate-y-[3px] hover:shadow-button-hover"
-            >
-              View Recipe
-            </button>
+          <button
+  onClick={() => setShowModal(true)}
+  className="font-heading inline-block bg-pink-800 hover:bg-pink-900 py-[0.65em] px-4 w-full text-center rounded-[5px] text-white font-medium tracking-[0.2px] text-[17px] border-none cursor-pointer transition-all duration-[250ms] ease-out hover:-translate-y-[3px] hover:shadow-button-hover"
+>
+  View Recipe
+</button>
+
           </div>
         </div>
       </div>
