@@ -131,7 +131,7 @@ function Home() {
             <p className="text-gray-600 text-xl mb-3 font-heading">
               Discover, create, and share amazing smoothie recipes
             </p>
-            <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Join our community of smoothie lovers! Browse recipes, rate your favorites, 
               and share your own unique blends with the world.
             </p>
