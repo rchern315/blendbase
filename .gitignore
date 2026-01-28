@@ -6,12 +6,17 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
 node_modules
 dist
 dist-ssr
 *.local
+# Supabase
+.supabase/
 
+# API Keys and Secrets
+**/secrets/
+**/*secret*
+**/*keys*
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -32,10 +37,16 @@ build/
 .env
 .env.local
 .env.production
+.env.development
+.env*.local
 # editor
 .vscode/
 .idea/
-
+# Private documentation
+SETUP.md
+docs/
+notes/
+private/
 # OS
 .DS_Store
 Thumbs.db
